@@ -1,4 +1,64 @@
-jQuery(function($){
+(function(){
+
+    if(window.jQuery == undefined){
+        var script_tag = document.createElement('script');
+        script_tag.setAttribute("type","text/javascript");
+        script_tag.setAttribute("src",
+            "http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js");
+
+        if (script_tag.readyState) {
+            script_tag.onreadystatechange = function () { // For old versions of IE
+            if (this.readyState == 'complete' || this.readyState == 'loaded') {
+                JscriptLoadHandler();
+            }
+        };
+        } else {
+            script_tag.onload = JscriptLoadHandler;
+        }
+
+        (document.getElementsByTagName("head")[0] || document.documentElement).appendChild(script_tag);
+
+    }else{
+        $ = window.jQuery;
+        getMoment();
+    }    
+function JscriptLoadHandler() {
+    
+    $ = window.jQuery.noConflict(true);
+    
+    getMoment();
+}      
+
+function getMoment(){
+    if(window.moment == undefined){
+        console.log("workin");
+        var csslink = $('<link>',{
+            rel: "stylesheet", 
+            type: "text/css", 
+            href: "http://proximamente.mx/profin/indicadores/css/main.css"
+        });
+
+       csslink.appendTo('head');
+
+        $.getScript("https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.2/moment.min.js", function(){
+            setGo();
+        })
+    }
+    else{
+        setGo();
+    }
+
+function scriptLoadHandler() {
+    // Restore $ and window.jQuery to their previous values and store the
+    // new jQuery in our local jQuery variable
+    
+    moment = window.moment;
+    // Call our main function
+    setGo(); 
+}
+}
+
+
 
 var indexOBJ = [
     {
@@ -138,11 +198,10 @@ function setGo(){
 
     });
     
-    $('.indicadoresDate').append("Indicadores al: "+ time);
+    //$('.indicadoresDate').append("Indicadores al: "+ time);
 }
-
-$(document).ready(function(){
+})();
+/*$(document).ready(function(){
     setGo();
-})
+})*/
 
-})
