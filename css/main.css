@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.index{
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    align-items: center;
+    border-bottom: 1px solid #eaeaea;
+}
+.index>*{
+    display:inline-block;
+    width: 25%;
+    align-self: center
+}
+.index>img{
+    width: inherit;
+    margin-right: 30px;
+}
+.index>p{
+    margin: 0;
+    text-align: right;
+}
+.indicadores{
+    width: 90%;
+    margin: -30px auto 0 auto;
+}
+.red{
+    color: red !important;
+}
+.green{
+    color:#779e00;
+}
+.indicadoresDate{
+    text-align: right;
+    font-weight: lighter;
+    margin: 5px 15px 5px 0;
+}
